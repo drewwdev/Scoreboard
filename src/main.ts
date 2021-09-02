@@ -2,12 +2,19 @@ import './style.css'
 
 let teamOneScore = 0
 let teamTwoScore = 0
+const addOneToTeamOneScore = document.querySelector('i.team1add')
+const addOneToTeamTwoScore = document.querySelector('i.team2add')
+const subtractOneFromTeamOneScore = document.querySelector('i.team1subtract')
+const subtractOneFromTeamTwoScore = document.querySelector('i.team2subtract')
+const resetBothTeamScores = document.querySelector('.reset')
 
 function handleClickButton(event: MouseEvent) {
   event.stopPropagation()
   event.preventDefault()
 
   const buttonClicked = event.target
+  const teamOneHeader = document.querySelector('h3.team1')
+  const teamTwoHeader = document.querySelector('h3.team2')
 
   if (buttonClicked instanceof HTMLElement) {
     if (buttonClicked.classList.contains('team1add')) {
@@ -20,6 +27,7 @@ function handleClickButton(event: MouseEvent) {
         teamTwoScore++
       }
     }
+
     if (buttonClicked.classList.contains('team1subtract')) {
       if (teamOneScore > 0) {
         teamOneScore--
@@ -31,33 +39,36 @@ function handleClickButton(event: MouseEvent) {
       }
     }
 
-    const teamOneHeader = document.querySelector('h3.team1')
+    if (buttonClicked.classList.contains('reset')) {
+      teamOneScore = 0
+      teamTwoScore = 0
+    }
+
     if (teamOneHeader instanceof HTMLHeadingElement) {
       teamOneHeader.textContent = `${teamOneScore}`
     }
-    const teamTwoHeader = document.querySelector('h3.team2')
     if (teamTwoHeader instanceof HTMLHeadingElement) {
       teamTwoHeader.textContent = `${teamTwoScore}`
     }
   }
 }
 
-const addOneTeamOneScore = document.querySelector('i.team1add')
-if (addOneTeamOneScore instanceof HTMLElement) {
-  addOneTeamOneScore.addEventListener('click', handleClickButton)
+if (addOneToTeamOneScore instanceof HTMLElement) {
+  addOneToTeamOneScore.addEventListener('click', handleClickButton)
 }
 
-const addOneTeamTwoScore = document.querySelector('i.team2add')
-if (addOneTeamTwoScore instanceof HTMLElement) {
-  addOneTeamTwoScore.addEventListener('click', handleClickButton)
+if (addOneToTeamTwoScore instanceof HTMLElement) {
+  addOneToTeamTwoScore.addEventListener('click', handleClickButton)
 }
 
-const subtractOneTeamOneScore = document.querySelector('i.team1subtract')
-if (subtractOneTeamOneScore instanceof HTMLElement) {
-  subtractOneTeamOneScore.addEventListener('click', handleClickButton)
+if (subtractOneFromTeamOneScore instanceof HTMLElement) {
+  subtractOneFromTeamOneScore.addEventListener('click', handleClickButton)
 }
 
-const subtractOneTeamTwoScore = document.querySelector('i.team2subtract')
-if (subtractOneTeamTwoScore instanceof HTMLElement) {
-  subtractOneTeamTwoScore.addEventListener('click', handleClickButton)
+if (subtractOneFromTeamTwoScore instanceof HTMLElement) {
+  subtractOneFromTeamTwoScore.addEventListener('click', handleClickButton)
+}
+
+if (resetBothTeamScores instanceof HTMLElement) {
+  resetBothTeamScores.addEventListener('click', handleClickButton)
 }
