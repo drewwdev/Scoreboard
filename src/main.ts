@@ -2,10 +2,10 @@ import './style.css'
 
 let teamOneScore = 0
 let teamTwoScore = 0
-const addOneToTeamOneScore = document.querySelector('i.team1add')
-const addOneToTeamTwoScore = document.querySelector('i.team2add')
-const subtractOneFromTeamOneScore = document.querySelector('i.team1subtract')
-const subtractOneFromTeamTwoScore = document.querySelector('i.team2subtract')
+const addOneToTeamOneScore = document.querySelector('.team1 i.add')
+const addOneToTeamTwoScore = document.querySelector('.team2 i.add')
+const subtractOneFromTeamOneScore = document.querySelector('.team1 i.subtract')
+const subtractOneFromTeamTwoScore = document.querySelector('.team2 i.subtract')
 const resetBothTeamScores = document.querySelector('.reset')
 
 function handleClickButton(event: MouseEvent) {
@@ -53,29 +53,37 @@ function handleClickButton(event: MouseEvent) {
   }
 }
 
-function handleUserInput(event: any) {
+function handleTeamOneUserInput(event: any) {
   event.stopPropagation()
   event.preventDefault()
 
   const userInput = event.target.value
-  const teamOneNameHeader = document.querySelector('h2.team1')
-  const teamTwoNameHeader = document.querySelector('h2.team2')
+  const teamOneNameHeader = document.querySelector('.team1 h2')
 
   if (teamOneNameHeader instanceof HTMLHeadingElement) {
-    teamOneNameHeader.textContent = `${userInput}` || 'Team Name'
+    teamOneNameHeader.textContent = `${userInput}` || 'Team 1'
   }
+}
+
+function handleTeamTwoUserInput(event: any) {
+  event.stopPropagation()
+  event.preventDefault()
+
+  const userInput = event.target.value
+  const teamTwoNameHeader = document.querySelector('.team2 h2')
+
   if (teamTwoNameHeader instanceof HTMLHeadingElement) {
-    teamTwoNameHeader.textContent = `${userInput}` || 'Team Name'
+    teamTwoNameHeader.textContent = `${userInput}` || 'Team 2'
   }
 }
 
 const changeTeamOneName = document.querySelector('.team-1-input')
 if (changeTeamOneName instanceof HTMLElement) {
-  changeTeamOneName.addEventListener('input', handleUserInput)
+  changeTeamOneName.addEventListener('input', handleTeamOneUserInput)
 }
 const changeTeamTwoName = document.querySelector('.team-2-input')
 if (changeTeamTwoName instanceof HTMLElement) {
-  changeTeamTwoName.addEventListener('input', handleUserInput)
+  changeTeamTwoName.addEventListener('input', handleTeamTwoUserInput)
 }
 
 if (addOneToTeamOneScore instanceof HTMLElement) {
