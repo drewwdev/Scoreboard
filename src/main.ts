@@ -7,6 +7,8 @@ const addOneToTeamTwoScore = document.querySelector('.team2 i.add')
 const subtractOneFromTeamOneScore = document.querySelector('.team1 i.subtract')
 const subtractOneFromTeamTwoScore = document.querySelector('.team2 i.subtract')
 const resetBothTeamScores = document.querySelector('.reset')
+const changeTeamOneName = document.querySelector('.team-1-input')
+const changeTeamTwoName = document.querySelector('.team-2-input')
 
 function handleClickButton(event: MouseEvent) {
   event.stopPropagation()
@@ -77,11 +79,9 @@ function handleTeamTwoUserInput(event: any) {
   }
 }
 
-const changeTeamOneName = document.querySelector('.team-1-input')
 if (changeTeamOneName instanceof HTMLElement) {
   changeTeamOneName.addEventListener('input', handleTeamOneUserInput)
 }
-const changeTeamTwoName = document.querySelector('.team-2-input')
 if (changeTeamTwoName instanceof HTMLElement) {
   changeTeamTwoName.addEventListener('input', handleTeamTwoUserInput)
 }
