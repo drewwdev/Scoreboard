@@ -62,20 +62,20 @@ function handleUserInput(event: any) {
   const teamTwoNameHeader = document.querySelector('h2.team2')
 
   if (teamOneNameHeader instanceof HTMLHeadingElement) {
-    teamOneNameHeader.textContent = `${userInput}`
+    teamOneNameHeader.textContent = `${userInput}` || 'Team Name'
   }
   if (teamTwoNameHeader instanceof HTMLHeadingElement) {
-    teamTwoNameHeader.textContent = `${userInput}`
+    teamTwoNameHeader.textContent = `${userInput}` || 'Team Name'
   }
 }
 
 const changeTeamOneName = document.querySelector('.team-1-input')
 if (changeTeamOneName instanceof HTMLElement) {
-  changeTeamOneName.addEventListener('change', handleUserInput)
+  changeTeamOneName.addEventListener('input', handleUserInput)
 }
 const changeTeamTwoName = document.querySelector('.team-2-input')
 if (changeTeamTwoName instanceof HTMLElement) {
-  changeTeamTwoName.addEventListener('change', handleUserInput)
+  changeTeamTwoName.addEventListener('input', handleUserInput)
 }
 
 if (addOneToTeamOneScore instanceof HTMLElement) {
