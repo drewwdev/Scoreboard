@@ -53,6 +53,31 @@ function handleClickButton(event: MouseEvent) {
   }
 }
 
+function handleUserInput(event: any) {
+  event.stopPropagation()
+  event.preventDefault()
+
+  const userInput = event.target.value
+  const teamOneNameHeader = document.querySelector('h2.team1')
+  const teamTwoNameHeader = document.querySelector('h2.team2')
+
+  if (teamOneNameHeader instanceof HTMLHeadingElement) {
+    teamOneNameHeader.textContent = `${userInput}`
+  }
+  if (teamTwoNameHeader instanceof HTMLHeadingElement) {
+    teamTwoNameHeader.textContent = `${userInput}`
+  }
+}
+
+const changeTeamOneName = document.querySelector('.team-1-input')
+if (changeTeamOneName instanceof HTMLElement) {
+  changeTeamOneName.addEventListener('change', handleUserInput)
+}
+const changeTeamTwoName = document.querySelector('.team-2-input')
+if (changeTeamTwoName instanceof HTMLElement) {
+  changeTeamTwoName.addEventListener('change', handleUserInput)
+}
+
 if (addOneToTeamOneScore instanceof HTMLElement) {
   addOneToTeamOneScore.addEventListener('click', handleClickButton)
 }
